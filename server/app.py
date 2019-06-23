@@ -1,18 +1,24 @@
 # http://flask.pocoo.org/docs/1.0/quickstart/#routing
-from flask import Flask
+from flask import Flask, render_template
 from flask import jsonify
 from flask import request
 from highlights import highlightsFunction
 from flask_cors import CORS, cross_origin
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
+
 cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 
 
-@app.route("/")
-def hello():
-    return "Serve HTML file from here"
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
+
+
+@app.route('/<path:path>')
+def static_file(path):
+    return app.send_static_file(path)
 
 
 @app.route("/highlights", methods=["POST"])
