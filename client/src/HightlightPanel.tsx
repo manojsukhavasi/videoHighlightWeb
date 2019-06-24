@@ -19,7 +19,7 @@ export class HighlightPanel extends React.Component<Props, State> {
                     <>
                         <br></br>
                         <Row noGutters>
-                            <h2 style={{ color: "red" }}>No Video to Play. Please Select Options and Submit.</h2>
+                            <h2 style={{ color: "red" }}>No Video to Play. Please Select Atleast One Option and Submit.</h2>
                         </Row>
                     </>
                 )}

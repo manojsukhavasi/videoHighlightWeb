@@ -12,3 +12,34 @@
     top: 0;
     left: 0;
 }
+
+.body{
+    overflow: auto;
+}
+
+.App{
+    margin: 0;
+    padding: 20px 40px;
+    background-color: #282c34;
+    height: 100%!important; 
+    color: white;
+}
+
+.highlightFormParent{
+    padding: 20px!important; 
+}
+
+@media only screen and (min-width: 768px) {
+    .highlightFormParent{
+        height: 94vh;
+        overflow: auto;
+    }
+    .App{
+        overflow: hidden;
+        height: 100vh; 
+    }
+    .body{
+        overflow: hidden!important;
+    }
+}
+

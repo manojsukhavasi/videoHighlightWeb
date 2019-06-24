@@ -41,26 +41,14 @@ export class HighlightForm extends React.Component<Props, State> {
 
     onSelect = (typeKey: string, value: string) => {
         const selectObjToUpdate: FORM_OPTION_OBJ = this.state.selectedObj;
-        if (value) {
-            selectObjToUpdate[typeKey] = value;
-        } else {
-            delete (selectObjToUpdate[typeKey]);
-        }
-
-        const setKeys = Object.keys(selectObjToUpdate);
-        let valid = true;
-        let i = 0;
-        for (i = 0; i < this.typeKeys.length; i++) {
+        selectObjToUpdate[typeKey] = value;
+        let valid = false;
+        for (let i = 0; i < this.typeKeys.length; i++) {
             const key = this.typeKeys[i];
-            if (HIGHLIGHT_TYPES[key].required) {
-                if (!setKeys.includes(key)) {
-                    valid = false;
-                    break;
-                }
+            if (selectObjToUpdate[key] && HIGHLIGHT_TYPES[key].required) {
+                valid = true;
+                break;
             }
-        }
-        if (i !== this.typeKeys.length) {
-            valid = false;
         }
         this.setState({
             selectedObj: selectObjToUpdate,
@@ -113,7 +101,7 @@ export class HighlightForm extends React.Component<Props, State> {
                         <Form.Group as={Col}>
                             <Form.Label>{HIGHLIGHT_TYPES[optionKey].title}</Form.Label>
                             <Form.Control as="select" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.onSelect(optionKey, e.target.value ? e.target.value : "") }}>
-                                <option value="">Select Moment</option>
+                                <option value="">Choose {HIGHLIGHT_TYPES[optionKey].title}</option>
                                 {HIGHLIGHT_TYPES[optionKey].options.map((option) => {
                                     return <option key={option.title} value={option.value}>{option.title}</option>;
                                 })}

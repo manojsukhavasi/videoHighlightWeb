@@ -31,7 +31,7 @@ export class Main extends React.Component<Props, State> {
                     <Col md={9} style={{ padding: "20px" }}>
                         <HighlightPanel {...this.state} />
                     </Col>
-                    <Col md={3} style={{ height: '94vh', overflow: 'auto', padding: "20px" }}>
+                    <Col md={3} className="highlightFormParent">
                         <HighlightForm onResponse={this.onAPIResponse} />
                     </Col>
                 </Row>
