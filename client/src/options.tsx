@@ -20,10 +20,13 @@ export const HIGHLIGHT_TYPES: FORM_OPTION_OBJ = {
         required: true,
         options: [{
             title: "Virat Kohli",
-            value: "kohli",
+            value: "Kohli",
         }, {
             title: "MS Dhoni",
-            value: "dhoni",
+            value: "Dhoni",
+        }, {
+            title: "David Warner",
+            value: "Warner"
         }]
     },
     "bowler": {
@@ -31,19 +34,19 @@ export const HIGHLIGHT_TYPES: FORM_OPTION_OBJ = {
         required: true,
         options: [{
             title: "Jaspreet Bumrah",
-            value: "bumrah",
+            value: "Bumrah",
         }, {
-            title: "Rashid Khan",
-            value: "rashid",
+            title: "Yuzvendra Chahal",
+            value: "Chahal",
+        },{
+           title: "Lasith Malinga",
+           value: "Malinga",
         }]
     },
     "shot": {
         title: "Shots",
         required: true,
         options: [{
-            title: "Cover Drive",
-            value: "cover-drive",
-        }, {
             title: "Pull",
             value: "pull",
         }, {
@@ -58,8 +61,8 @@ export const HIGHLIGHT_TYPES: FORM_OPTION_OBJ = {
             title: "Yorker",
             value: "yorker",
         }, {
-            title: "Short Ball",
-            value: "short-ball",
+            title: "Googly",
+            value: "googly",
         }]
     },
     "runs": {
@@ -75,13 +78,13 @@ export const HIGHLIGHT_TYPES: FORM_OPTION_OBJ = {
             title: "3",
             value: "3",
         }, {
-            title: "4",
+            title: "Four",
             value: "4",
         }, {
             title: "5",
             value: "5",
         }, {
-            title: "6",
+            title: "Six",
             value: "6",
         }]
     },
