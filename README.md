@@ -2,6 +2,7 @@
 1. install python if not already
 2. install flask
     - http://flask.pocoo.org/docs/1.0/installation/
+    - Install flask-cors: `pip install flask-cors`
 3. cd server
 4. replace `highlightsFunction` function with actual one in highlights.py 
 4. flask run
