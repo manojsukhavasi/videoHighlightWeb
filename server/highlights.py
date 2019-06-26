@@ -7,6 +7,8 @@ OUTPUT_FOLDER='./static/stream/'
 
 def create_text_file(clip_names, fname):
     out_file = f'{OUTPUT_FOLDER}{fname}.txt'
+    # Allowing only 10 clips
+    clip_names = clip_names[:10]
     with open(out_file, 'w') as f:
         f.write('\n'.join([f'file {fn}' for fn in clip_names]))
     
@@ -68,15 +70,17 @@ def get_highlights(batsman, bowler, shot, ball_type, runs, wicket):
     else:
         filters['wicket']=None
 
+    print(filters)
     fname = fname.strip()
-
-    clip_names = search(filters)
-    txt_file = create_text_file(clip_names, fname)
-
     out_video_path = f'{OUTPUT_FOLDER}{fname}.mp4'
-    os.system(f'ffmpeg -f concat -safe 0 -i {txt_file} -c copy {out_video_path}')
 
-    print(f'File created at {out_video_path}')
+    if (os.path.isfile(out_video_path)):
+        print('File already exists')
+    else:
+        clip_names = search(filters)
+        txt_file = create_text_file(clip_names, fname)
+        os.system(f'ffmpeg -f concat -safe 0 -i {txt_file} -c copy {out_video_path}')
+        print(f'File created at {out_video_path}')
 
     return f'stream/{fname}.mp4'
 

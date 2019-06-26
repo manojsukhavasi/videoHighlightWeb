@@ -23,6 +23,7 @@ def search(filters):
     if filters['ball_type']:
         s = s.query('match', comment=filters['ball_type'])
 
+    s = s.sort({'match': {'order': 'asc'}},{'innings': {'order': 'asc'}}, {'over': {'order': 'asc'}}, {'ball': {'order': 'asc'}})
     total = s.count()
     response = s[:total].execute()
     print(len(response.hits))
