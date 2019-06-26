@@ -27,10 +27,23 @@ export class HighlightForm extends React.Component<Props, State> {
         };
     }
 
+    componentDidMount() {
+        const optionKeys = Object.keys(HIGHLIGHT_TYPES);
+        const defaultOptions: FORM_OPTION_OBJ = {};
+        optionKeys.forEach(key => {
+            defaultOptions[key] = "";
+        })
+
+        this.setState({
+            selectedObj: defaultOptions
+        });
+    }
+
     typeKeys = Object.keys(HIGHLIGHT_TYPES);
 
 
-    convertBooleanForWicket = (value: string): boolean | undefined => {
+    convertBooleanForWicket = (value: string): boolean | null => {
+        if (!value) return null;
         const val: any = {
             "undefined": null,
             "true": true,
