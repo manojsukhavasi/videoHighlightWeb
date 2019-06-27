@@ -3,4 +3,4 @@ def highlightsFunction(batsman, bowler, shot, ball_type, runs, wicket):
 
 
 def badmintonHighlightsFunction(inputUrl, startTime, endTime):
-    return "https://www.youtube.com/watch?v=JdTBIHX-r0M"
+    return "http://www.youtube.com/watch?v=JdTBIHX-r0M"
