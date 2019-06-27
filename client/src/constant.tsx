@@ -6,3 +6,5 @@ export const API_CALL = {
 }
 
 export const DEFAULT_VIDEO = "";
+
+export const API_TIMEOUT_SECONDS = 300;  // 5 minutes

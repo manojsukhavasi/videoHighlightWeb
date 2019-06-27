@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Form, Col, Row, FormControlProps } from 'react-bootstrap';
-import { API_CALL } from './constant';
+import { API_CALL, API_TIMEOUT_SECONDS } from './constant';
 import { GlobalSpinner } from './GlobalSpinner';
+import { fetchWrapper } from './apiHandler';
 
 interface FORM_OPTION_OBJ {
     [typeKey: string]: string;
@@ -53,7 +54,7 @@ export class BadmintonForm extends React.Component<Props, State> {
             showSpinner: true
         })
         const paramToSend: any = this.state.selectedObj;
-        fetch(API_CALL.IP + API_CALL.BADMINTON_ENDPOINT,
+        fetchWrapper(API_CALL.IP + API_CALL.BADMINTON_ENDPOINT,
             {
                 method: API_CALL.METHOD,
                 headers: {
@@ -64,7 +65,8 @@ export class BadmintonForm extends React.Component<Props, State> {
                 body: JSON.stringify({
                     parameters: paramToSend
                 })
-            }
+            },
+            API_TIMEOUT_SECONDS ? API_TIMEOUT_SECONDS * 1000 : 0
         ).then((res) => {
             return res.json()
         }).then((res: APIResponse) => {
