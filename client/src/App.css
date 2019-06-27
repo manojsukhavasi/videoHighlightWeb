@@ -19,7 +19,6 @@
 
 .App{
     margin: 0;
-    padding: 20px 40px;
     background-color: #282c34;
     height: 100%!important; 
     color: white;
@@ -28,6 +27,26 @@
 .highlightFormParent{
     padding: 20px!important; 
 }
+
+.navMenuOptions{
+    cursor: pointer;
+    width: 20%;
+    display: none!important;
+    color: #17A2B8!important;
+    text-align: center;
+    margin: 0!important;
+    background-color: white;
+    border-left: solid #17A2B8 2px;
+}
+
+.navMenuOptions.active{
+    background-color: #282C34;
+}
+
+.notForMobile{
+    display: none!important;
+}
+
 
 @media only screen and (min-width: 768px) {
     .highlightFormParent{
@@ -40,6 +59,16 @@
     }
     .body{
         overflow: hidden!important;
+    }
+    .onlyForMobile{
+        display: none!important;
+    }
+
+    .notForMobile{
+        display: block!important;
+    }
+    .navMenuOptions{
+        display: block!important;
     }
 }
 

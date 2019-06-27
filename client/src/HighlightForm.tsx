@@ -28,6 +28,10 @@ export class HighlightForm extends React.Component<Props, State> {
     }
 
     componentDidMount() {
+        this.resetOptions();
+    }
+
+    resetOptions = () => {
         const optionKeys = Object.keys(HIGHLIGHT_TYPES);
         const defaultOptions: FORM_OPTION_OBJ = {};
         optionKeys.forEach(key => {
@@ -98,7 +102,7 @@ export class HighlightForm extends React.Component<Props, State> {
             this.setState({
                 showSpinner: false
             })
-            this.props.onResponse({ url: "" })
+            this.props.onResponse({ url: "error" })
         })
     }
 
@@ -107,21 +111,27 @@ export class HighlightForm extends React.Component<Props, State> {
             <>
                 {this.state.showSpinner && <GlobalSpinner />}
                 <Row noGutters>
-                    <h4>Highlights Viewer</h4>
+                    <h4>Cricket</h4>
                 </Row>
-                {this.typeKeys.map(optionKey => {
-                    return (<Row noGutters key={optionKey}>
-                        <Form.Group as={Col}>
-                            <Form.Label>{HIGHLIGHT_TYPES[optionKey].title}</Form.Label>
-                            <Form.Control as="select" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.onSelect(optionKey, e.target.value ? e.target.value : "") }}>
-                                <option value="">Choose {HIGHLIGHT_TYPES[optionKey].title}</option>
-                                {HIGHLIGHT_TYPES[optionKey].options.map((option) => {
-                                    return <option key={option.title} value={option.value}>{option.title}</option>;
-                                })}
-                            </Form.Control>
-                        </Form.Group>
-                    </Row>)
-                })}
+                <Row noGutters>
+                    {this.typeKeys.map((optionKey: string, index: number) => {
+
+                        return (
+                            <Col md={6} key={index} style={{ padding: '4px' }}>
+                                <Form.Group>
+                                    <Form.Label>{HIGHLIGHT_TYPES[optionKey].title}</Form.Label>
+                                    <Form.Control as="select" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.onSelect(optionKey, e.target.value ? e.target.value : "") }}>
+                                        <option value="">Choose {HIGHLIGHT_TYPES[optionKey].title}</option>
+                                        {HIGHLIGHT_TYPES[optionKey].options.map((option) => {
+                                            return <option key={option.title} value={option.value}>{option.title}</option>;
+                                        })}
+                                    </Form.Control>
+                                </Form.Group>
+                            </Col>
+                        );
+                    })}
+                </Row>
+
                 <br></br>
                 <Row noGutters>
                     <Button disabled={!this.state.valid} variant="info" style={{ width: "100%" }} onClick={this.callApi}>

@@ -51,17 +51,6 @@ export const HIGHLIGHT_TYPES: FORM_OPTION_OBJ = {
             value: "sweep",
         }]
     },
-    "ball_type": {
-        title: "Ball Types",
-        required: true,
-        options: [{
-            title: "Yorker",
-            value: "yorker",
-        }, {
-            title: "Short Ball",
-            value: "short-ball",
-        }]
-    },
     "runs": {
         title: "Runs",
         required: true,
@@ -83,6 +72,17 @@ export const HIGHLIGHT_TYPES: FORM_OPTION_OBJ = {
         }, {
             title: "6",
             value: "6",
+        }]
+    },
+    "ball_type": {
+        title: "Ball Types",
+        required: true,
+        options: [{
+            title: "Yorker",
+            value: "yorker",
+        }, {
+            title: "Short Ball",
+            value: "short-ball",
         }]
     },
     "wicket": {

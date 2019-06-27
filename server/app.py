@@ -38,3 +38,18 @@ def login():
         return jsonify({"url": url})
     else:
         return "Please POST"
+
+
+@app.route("/baddyhighlights", methods=["POST"])
+@cross_origin()
+def login():
+    if request.method == "POST":
+        param = request.json["parameters"]
+        url = badmintonHighlightsFunction(
+            param["inputUrl"],
+            param["startTime"],
+            param["endTime"],
+        )
+        return jsonify({"url": url})
+    else:
+        return "Please POST"
