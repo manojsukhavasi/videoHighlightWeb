@@ -16,7 +16,7 @@ export interface APIResponse {
     url: string;
 }
 
-export class BadmintonForm extends React.Component<Props, State> {
+export class TennisForm extends React.Component<Props, State> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -44,14 +44,13 @@ export class BadmintonForm extends React.Component<Props, State> {
         this.setState({
             showSpinner: true
         })
-        fetchWrapper(API_CALL.IP + API_CALL.BADMINTON_ENDPOINT,
+        fetchWrapper(API_CALL.IP + API_CALL.TENNIS_ENDPOINT,
             {
                 method: API_CALL.METHOD,
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                // make sure to serialize your JSON body
                 body: JSON.stringify({
                     parameters: this.state.selectedObj
                 })
@@ -77,7 +76,7 @@ export class BadmintonForm extends React.Component<Props, State> {
             <>
                 {this.state.showSpinner && <GlobalSpinner />}
                 <Row noGutters>
-                    <h4>Badminton</h4>
+                    <h4>Tennis</h4>
                 </Row>
                 <Row noGutters>
                     <Form.Group as={Col}>

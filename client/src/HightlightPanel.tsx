@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import { MainPageState } from './Main';
+import { PAGE_TYPES } from './options';
 //https://www.npmjs.com/package/react-player
 
 type Props = MainPageState;
@@ -19,13 +20,13 @@ export class HighlightPanel extends React.Component<Props, State> {
                     <>
                         <br></br>
                         <Row noGutters>
-                            {this.props.page === "cricket" && <h2 style={{ color: "red" }}>No Video to Play. Please Select Atleast One Option and Submit.</h2>}
-                            {this.props.page === "badminton" && <h2 style={{ color: "red" }}>No Video to Play. Please Provide Video URL and Submit.</h2>}
+                            {this.props.page === PAGE_TYPES[0] && <h2 style={{ color: "red" }}>No Video to Play. Please Select Atleast One Option and Submit.</h2>}
+                            {[PAGE_TYPES[1], PAGE_TYPES[2]].includes(this.props.page) && <h2 style={{ color: "red" }}>No Video to Play. Please Provide {this.props.page} Video URL and Submit.</h2>}
                         </Row>
                         <br></br>
                         <Row noGutters>
-                            {this.props.page === "cricket" && <p>Please select options from right side and submit to View Highlights Video</p>}
-                            {this.props.page === "badminton" && <p>Please give Video URL and We will generate Highlights from the Video</p>}
+                            {this.props.page === PAGE_TYPES[0] && <p>Please select options from right side and submit to View Highlights Video</p>}
+                            {[PAGE_TYPES[1], PAGE_TYPES[2]].includes(this.props.page) && <p>Please give {this.props.page} Video URL and We will generate Highlights from the Video</p>}
                         </Row>
                     </>
                 )}

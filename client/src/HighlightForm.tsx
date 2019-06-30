@@ -2,8 +2,8 @@ import React from 'react';
 import { Button, Form, Col, Row, FormControlProps } from 'react-bootstrap';
 import { API_CALL, API_TIMEOUT_SECONDS } from './constant';
 import { GlobalSpinner } from './GlobalSpinner';
-import { HIGHLIGHT_TYPES } from './options';
 import { fetchWrapper } from './apiHandler';
+import { CRICKET_HIGHLIGHT_TYPES } from './options';
 
 interface FORM_OPTION_OBJ {
     [typeKey: string]: string;
@@ -33,7 +33,7 @@ export class HighlightForm extends React.Component<Props, State> {
     }
 
     resetOptions = () => {
-        const optionKeys = Object.keys(HIGHLIGHT_TYPES);
+        const optionKeys = Object.keys(CRICKET_HIGHLIGHT_TYPES);
         const defaultOptions: FORM_OPTION_OBJ = {};
         optionKeys.forEach(key => {
             defaultOptions[key] = "";
@@ -44,7 +44,7 @@ export class HighlightForm extends React.Component<Props, State> {
         });
     }
 
-    typeKeys = Object.keys(HIGHLIGHT_TYPES);
+    typeKeys = Object.keys(CRICKET_HIGHLIGHT_TYPES);
 
 
     convertBooleanForWicket = (value: string): boolean | null => {
@@ -63,7 +63,7 @@ export class HighlightForm extends React.Component<Props, State> {
         let valid = false;
         for (let i = 0; i < this.typeKeys.length; i++) {
             const key = this.typeKeys[i];
-            if (selectObjToUpdate[key] && HIGHLIGHT_TYPES[key].required) {
+            if (selectObjToUpdate[key] && CRICKET_HIGHLIGHT_TYPES[key].required) {
                 valid = true;
                 break;
             }
@@ -120,10 +120,10 @@ export class HighlightForm extends React.Component<Props, State> {
                         return (
                             <Col md={6} key={index} style={{ padding: '4px' }}>
                                 <Form.Group>
-                                    <Form.Label>{HIGHLIGHT_TYPES[optionKey].title}</Form.Label>
+                                    <Form.Label>{CRICKET_HIGHLIGHT_TYPES[optionKey].title}</Form.Label>
                                     <Form.Control as="select" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.onSelect(optionKey, e.target.value ? e.target.value : "") }}>
-                                        <option value="">Choose {HIGHLIGHT_TYPES[optionKey].title}</option>
-                                        {HIGHLIGHT_TYPES[optionKey].options.map((option) => {
+                                        <option value="">Choose {CRICKET_HIGHLIGHT_TYPES[optionKey].title}</option>
+                                        {CRICKET_HIGHLIGHT_TYPES[optionKey].options.map((option) => {
                                             return <option key={option.title} value={option.value}>{option.title}</option>;
                                         })}
                                     </Form.Control>

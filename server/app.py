@@ -4,6 +4,7 @@ from flask import jsonify
 from flask import request
 from highlights import highlightsFunction
 from highlights import badmintonHighlightsFunction
+from highlights import tennisHighlightsFunction
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__, static_url_path="")
@@ -52,3 +53,19 @@ def badminton():
         return jsonify({"url": url})
     else:
         return "Please POST"
+
+
+@app.route("/tennishighlights", methods=["POST"])
+@cross_origin()
+def tennis():
+    if request.method == "POST":
+        param = request.json["parameters"]
+        url = tennisHighlightsFunction(
+            param["inputUrl"], param["startTime"], param["endTime"]
+        )
+        return jsonify({"url": url})
+    else:
+        return "Please POST"
+
+
+

@@ -4,9 +4,11 @@ import { HighlightForm, APIResponse } from './HighlightForm';
 import { HighlightPanel } from './HightlightPanel';
 import { DEFAULT_VIDEO } from './constant';
 import { BadmintonForm } from './BadmintonForm';
+import { PAGE_TYPES } from './options';
+import { TennisForm } from './TennisForm';
 
 type Props = {};
-export interface MainPageState { url: string; page: "cricket" | "badminton" };
+export interface MainPageState { url: string; page: string };
 
 export class Main extends React.Component<Props, MainPageState> {
 
@@ -14,13 +16,11 @@ export class Main extends React.Component<Props, MainPageState> {
         super(props);
         this.state = {
             url: DEFAULT_VIDEO,
-            // moment: "demo",
-            // type: "highlights"
-            page: "cricket"
+            page: PAGE_TYPES[0]
         }
     }
 
-    setPage = (page: "cricket" | "badminton") => {
+    setPage = (page: string) => {
         this.setState({
             page,
             url: ""
@@ -41,20 +41,20 @@ export class Main extends React.Component<Props, MainPageState> {
                         Video Highlights Viewer
                     </NavbarBrand>
                     <Navbar.Collapse className="justify-content-end">
-                        <NavbarBrand className={this.state.page === 'cricket' ? 'navMenuOptions active' : 'navMenuOptions'} onClick={() => this.setPage("cricket")}>
-                            Cricket
-                        </NavbarBrand>
-                        <NavbarBrand className={this.state.page === 'badminton' ? 'navMenuOptions active' : 'navMenuOptions'} onClick={() => this.setPage("badminton")}>
-                            Badminton
-                        </NavbarBrand>
+                        {PAGE_TYPES.map(p => {
+                            return (<NavbarBrand key={p} className={this.state.page === p ? 'navMenuOptions active' : 'navMenuOptions'} onClick={() => this.setPage(p)}>
+                                {p}
+                            </NavbarBrand>);
+                        })}
                     </Navbar.Collapse>
                 </Navbar>
                 <br></br>
                 <Row noGutters className="onlyForMobile">
                     <Form.Group as={Col} style={{ padding: "20px" }}>
-                        <Form.Control as="select" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.setPage(e.target.value === "badminton" ? e.target.value : "cricket") }}>
-                            <option value="cricket">Cricket</option>
-                            <option value="badminton">Badminton</option>
+                        <Form.Control as="select" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.setPage(e.target.value || PAGE_TYPES[0]) }}>
+                            {PAGE_TYPES.map(p => {
+                                return <option key={p} value={p}>{p}</option>
+                            })}
                         </Form.Control>
                     </Form.Group>
                     {/* </Col> */}
@@ -65,8 +65,9 @@ export class Main extends React.Component<Props, MainPageState> {
                         <HighlightPanel {...this.state} />
                     </Col>
                     <Col md={4} className="highlightFormParent">
-                        {this.state.page === "cricket" && <HighlightForm onResponse={this.onAPIResponse} />}
-                        {this.state.page === "badminton" && <BadmintonForm onResponse={this.onAPIResponse} />}
+                        {this.state.page === PAGE_TYPES[0] && <HighlightForm onResponse={this.onAPIResponse} />}
+                        {this.state.page === PAGE_TYPES[1] && <BadmintonForm onResponse={this.onAPIResponse} />}
+                        {this.state.page === PAGE_TYPES[2] && <TennisForm onResponse={this.onAPIResponse} />}
                     </Col>
                 </Row>
             </>
