@@ -2,9 +2,9 @@
 from flask import Flask, render_template
 from flask import jsonify
 from flask import request
-from highlights import highlightsFunction
 from highlights import badmintonHighlightsFunction
 from highlights import tennisHighlightsFunction
+from highlights import get_highlights 
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__, static_url_path="")
@@ -29,7 +29,7 @@ def cricket():
     if request.method == "POST":
         param = request.json["parameters"]
         # param.batsman, bowler, shot, ball_type, runs, wicket
-        url = highlightsFunction(
+        url = get_highlights(
             param["batsman"],
             param["bowler"],
             param["shot"],
