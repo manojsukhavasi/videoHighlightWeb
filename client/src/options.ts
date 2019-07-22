@@ -14,7 +14,7 @@ export interface FORM_OPTION_OBJ {
     [typeKey: string]: TYPE_KEY_OBJECT;
 }
 
-export const PAGE_TYPES = ["Cricket", "Badminton", "Tennis"];
+export const PAGE_TYPES = ["Badminton", "Tennis", "Cricket"];
 
 
 export const CRICKET_HIGHLIGHT_TYPES: FORM_OPTION_OBJ = {

@@ -23,8 +23,7 @@ export class BadmintonForm extends React.Component<Props, State> {
             showSpinner: false,
             selectedObj: {
                 inputUrl: "",
-                startTime: "",
-                endTime: ""
+                email:""
             },
             valid: false
         };
@@ -86,19 +85,10 @@ export class BadmintonForm extends React.Component<Props, State> {
                     </Form.Group>
                 </Row>
                 <Row noGutters>
-                    <Col md={5}>
-                        <Form.Group>
-                            <Form.Label>Start Time</Form.Label>
-                            <Form.Control type="text" placeholder="MM:SS" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.onSelect("startTime", e.target.value ? e.target.value : "") }} />
-                        </Form.Group>
-                    </Col>
-                    <Col md={2}></Col>
-                    <Col md={5}>
-                        <Form.Group>
-                            <Form.Label>End Time</Form.Label>
-                            <Form.Control type="text" placeholder="MM:SS" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.onSelect("endTime", e.target.value ? e.target.value : "") }} />
-                        </Form.Group>
-                    </Col>
+                    <Form.Group as={Col}>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="text" placeholder="Email" onChange={(e: React.ChangeEvent<FormControlProps>) => { this.onSelect("email", e.target.value ? e.target.value : "") }} />
+                    </Form.Group>
 
                 </Row>
 

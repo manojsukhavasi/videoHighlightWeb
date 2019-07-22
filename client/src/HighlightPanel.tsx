@@ -20,13 +20,13 @@ export class HighlightPanel extends React.Component<Props, State> {
                     <>
                         <br></br>
                         <Row noGutters>
-                            {this.props.page === PAGE_TYPES[0] && <h2 style={{ color: "red" }}>No Video to Play. Please Select Atleast One Option and Submit.</h2>}
-                            {[PAGE_TYPES[1], PAGE_TYPES[2]].includes(this.props.page) && <h2 style={{ color: "red" }}>No Video to Play. Please Provide {this.props.page} Video URL and Submit.</h2>}
+                            {this.props.page === PAGE_TYPES[2] && <h2 style={{ color: "red" }}>No Video to Play. Please Select Atleast One Option and Submit.</h2>}
+                            {[PAGE_TYPES[0], PAGE_TYPES[1]].includes(this.props.page) && <h2 style={{ color: "red" }}> Please Provide an youtube url for a {this.props.page} Video</h2>}
                         </Row>
                         <br></br>
                         <Row noGutters>
-                            {this.props.page === PAGE_TYPES[0] && <p>Please select options from right side and submit to View Highlights Video</p>}
-                            {[PAGE_TYPES[1], PAGE_TYPES[2]].includes(this.props.page) && <p>Please give {this.props.page} Video URL and We will generate Highlights from the Video</p>}
+                            {this.props.page === PAGE_TYPES[2] && <p>Please select options from right side and submit to View Highlights Video</p>}
+                            {[PAGE_TYPES[0], PAGE_TYPES[1]].includes(this.props.page) && <p>We will process the video and mail you a link to download the highlights video in a short time.</p>}
                         </Row>
                     </>
                 )}

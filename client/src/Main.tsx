@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row, Navbar, NavbarBrand, Form, FormControlProps } from 'react-bootstrap';
 import { HighlightForm, APIResponse } from './HighlightForm';
-import { HighlightPanel } from './HightlightPanel';
+import { HighlightPanel } from './HighlightPanel';
 import { DEFAULT_VIDEO } from './constant';
 import { BadmintonForm } from './BadmintonForm';
 import { PAGE_TYPES } from './options';
@@ -38,7 +38,7 @@ export class Main extends React.Component<Props, MainPageState> {
             <>
                 <Navbar bg="info" variant="dark" style={{ paddingBottom: 0, paddingTop: 0, paddingRight: 0 }}>
                     <NavbarBrand>
-                        Video Highlights Viewer
+                        Greensight
                     </NavbarBrand>
                     <Navbar.Collapse className="justify-content-end">
                         {PAGE_TYPES.map(p => {
@@ -65,9 +65,9 @@ export class Main extends React.Component<Props, MainPageState> {
                         <HighlightPanel {...this.state} />
                     </Col>
                     <Col md={4} className="highlightFormParent">
-                        {this.state.page === PAGE_TYPES[0] && <HighlightForm onResponse={this.onAPIResponse} />}
-                        {this.state.page === PAGE_TYPES[1] && <BadmintonForm onResponse={this.onAPIResponse} />}
-                        {this.state.page === PAGE_TYPES[2] && <TennisForm onResponse={this.onAPIResponse} />}
+                        {this.state.page === PAGE_TYPES[2] && <HighlightForm onResponse={this.onAPIResponse} />}
+                        {this.state.page === PAGE_TYPES[0] && <BadmintonForm onResponse={this.onAPIResponse} />}
+                        {this.state.page === PAGE_TYPES[1] && <TennisForm onResponse={this.onAPIResponse} />}
                     </Col>
                 </Row>
             </>
