@@ -47,10 +47,10 @@ def cricket():
 def badminton():
     if request.method == "POST":
         param = request.json["parameters"]
-        url = badmintonHighlightsFunction(
-            param["inputUrl"], param["startTime"], param["endTime"]
+        burl = badmintonHighlightsFunction(
+            param["inputUrl"], param['email']
         )
-        return jsonify({"url": url})
+        return jsonify({"url": burl})
     else:
         return "Please POST"
 

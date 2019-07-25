@@ -1,10 +1,10 @@
-import argparse, os
+import argparse, os, requests
 from collections import defaultdict
 
 from search import search
 
-OUTPUT_FOLDER='./static/stream/'
-
+#OUTPUT_FOLDER='./static/stream/'
+OUTPUT_FOLDER='./stream/'
 def create_text_file(clip_names, fname):
     out_file = f'{OUTPUT_FOLDER}{fname}.txt'
     # Allowing only 10 clips
@@ -84,9 +84,15 @@ def get_highlights(batsman, bowler, shot, ball_type, runs, wicket):
 
     return f'stream/{fname}.mp4'
 
-def badmintonHighlightsFunction(inputUrl, startTime, endTime):
-    return "http://www.youtube.com/watch?v=JdTBIHX-r0M"
-
+def badmintonHighlightsFunction(inputUrl, email):
+    URL = 'http://35.199.152.210:5000'
+    PARAMS={'url': inputUrl,
+            'start_time': '00:05:00',
+            'duration': '00:04:00' ,
+            'email': email
+            } 
+    r = requests.get(url = URL, params = PARAMS)
+    return 'Done'
 
 def tennisHighlightsFunction(inputUrl, startTime, endTime):
     return "http://www.youtube.com/watch?v=JdTBIHX-r0M"

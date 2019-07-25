@@ -1,5 +1,5 @@
 export const API_CALL = {
-    IP: "http://35.203.155.182:5000/",
+    IP: "https://greensight.ai/",
     ENDPOINT: "highlights",
     BADMINTON_ENDPOINT: "baddyhighlights",
     TENNIS_ENDPOINT: "tennishighlights",
