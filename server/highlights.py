@@ -85,7 +85,7 @@ def get_highlights(batsman, bowler, shot, ball_type, runs, wicket):
     return f'stream/{fname}.mp4'
 
 def badmintonHighlightsFunction(inputUrl, email):
-    URL = 'http://35.199.152.210:5000'
+    URL = 'http://34.83.101.230:5000/badminton'
     PARAMS={'url': inputUrl,
             'start_time': '00:05:00',
             'duration': '00:04:00' ,
@@ -94,9 +94,15 @@ def badmintonHighlightsFunction(inputUrl, email):
     r = requests.get(url = URL, params = PARAMS)
     return 'Done'
 
-def tennisHighlightsFunction(inputUrl, startTime, endTime):
-    return "http://www.youtube.com/watch?v=JdTBIHX-r0M"
-
+def tennisHighlightsFunction(inputUrl,email):
+    URL = 'http://34.83.101.230:5000/tennis'
+    PARAMS={'url': inputUrl,
+            'start_time': '00:05:00',
+            'duration': '00:04:00' ,
+            'email': email
+            }
+    r = requests.get(url = URL, params = PARAMS)
+    return 'Done'
 
 if __name__ == "__main__":
 

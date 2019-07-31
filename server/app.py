@@ -61,7 +61,7 @@ def tennis():
     if request.method == "POST":
         param = request.json["parameters"]
         url = tennisHighlightsFunction(
-            param["inputUrl"], param["startTime"], param["endTime"]
+            param["inputUrl"], param['email']
         )
         return jsonify({"url": url})
     else:
