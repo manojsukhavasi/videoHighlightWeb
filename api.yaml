@@ -1,0 +1,100 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Cricket Highlights
+  description: 
+  license:
+    name: MIT
+servers:
+  - url: http://api.example.com/v1
+    description: Main server
+paths:
+  /highlights:
+    get:
+      summary: Gets the path to a video file
+      description: Returns a file path for streaming
+      parameters:
+      - name: "batsmen"
+        description: 
+        in: query
+        required: False
+        schema:
+          type: string
+          enum: [kohli, dhoni]
+      - name: "bowler"
+        description: 
+        in: query
+        required: False
+        schema:
+          type: string
+          enum: [bumrah, rashid]
+      - name: "Shot"
+        description: 
+        in: query
+        required: 
+        schema:
+          type: string
+          enum: [cover-drive, pull, sweep]
+      - name: "ball-type"
+        description: 
+        in: query
+        required: 
+        schema:
+          type: string
+          enum: [yorker, short-ball]
+      - name: "score"
+        description: 
+        in: query
+        required: 
+        schema:
+          type: string
+          enum: [1,2,3,4,6]
+      - name: "wickets"
+        description: 
+        in: query
+        required: False
+        schema:
+          type: boolean
+      responses:
+       '200':
+        description: OK
+        content:
+          text/plain:
+            schema:
+              type: string
+              example: /highlights/2345.mp4
+        
+  /baddyhighlights:
+    get:
+      summary: Request to send the higlighted video to mail
+      description: 
+      parameters:
+      - name: "inputUrl"
+        description: 
+        in: query
+        required: True
+        schema:
+          type: string
+      - name: "email"
+        description: 
+        in: query
+        required: True
+        schema:
+          type: string
+  /tennishighlights:
+    get:
+      summary: Request to send the higlighted video to mail
+      description: 
+      parameters:
+      - name: "inputUrl"
+        description: 
+        in: query
+        required: True
+        schema:
+          type: string
+      - name: "email"
+        description: 
+        in: query
+        required: True
+        schema:
+          type: string
