@@ -46,11 +46,14 @@ def cricket():
 @cross_origin()
 def badminton():
     if request.method == "POST":
-        param = request.json["parameters"]
-        burl = badmintonHighlightsFunction(
-            param["inputUrl"], param['email']
-        )
-        return jsonify({"url": burl})
+        if request.args['inputUrl'] and request.args['email']:
+            param = request.args
+            url = badmintonHighlightsFunction(
+                    param["inputUrl"], param['email']
+                )
+            return "Success"
+        else:
+            return "Bad Request"
     else:
         return "Please POST"
 
@@ -59,11 +62,14 @@ def badminton():
 @cross_origin()
 def tennis():
     if request.method == "POST":
-        param = request.json["parameters"]
-        url = tennisHighlightsFunction(
-            param["inputUrl"], param['email']
-        )
-        return jsonify({"url": url})
+        if request.args['inputUrl'] and request.args['email']:
+            param = request.args
+            url = tennisHighlightsFunction(
+                param["inputUrl"], param['email']
+            )
+            return "Success"
+        else:
+            return "Bad Request"
     else:
         return "Please POST"
 
